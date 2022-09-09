@@ -1,21 +1,22 @@
-import 'package:best_flutter_ui_templates/fitness_app/ui_view/body_measurement.dart';
-import 'package:best_flutter_ui_templates/fitness_app/ui_view/glass_view.dart';
-import 'package:best_flutter_ui_templates/fitness_app/ui_view/mediterranean_diet_view.dart';
+import 'package:best_flutter_ui_templates/fitness_app/Rations/Stock.dart';
+import 'package:best_flutter_ui_templates/fitness_app/ui_view/area_list_view.dart';
+import 'package:best_flutter_ui_templates/fitness_app/ui_view/running_view.dart';
 import 'package:best_flutter_ui_templates/fitness_app/ui_view/title_view.dart';
-import 'package:best_flutter_ui_templates/fitness_app/fitness_app_theme.dart';
-import 'package:best_flutter_ui_templates/fitness_app/my_diary/meals_list_view.dart';
-import 'package:best_flutter_ui_templates/fitness_app/my_diary/water_view.dart';
+import 'package:best_flutter_ui_templates/fitness_app/ui_view/workout_view.dart';
 import 'package:flutter/material.dart';
 
-class MyDiaryScreen extends StatefulWidget {
-  const MyDiaryScreen({Key? key, this.animationController}) : super(key: key);
+import '../../main.dart';
+import '../fitness_app_theme.dart';
+
+class RationsScreen extends StatefulWidget {
+  const RationsScreen({Key? key, this.animationController}) : super(key: key);
 
   final AnimationController? animationController;
   @override
-  _MyDiaryScreenState createState() => _MyDiaryScreenState();
+  _RationsScreenState createState() => _RationsScreenState();
 }
 
-class _MyDiaryScreenState extends State<MyDiaryScreen>
+class _RationsScreenState extends State<RationsScreen>
     with TickerProviderStateMixin {
   Animation<double>? topBarAnimation;
 
@@ -57,11 +58,172 @@ class _MyDiaryScreenState extends State<MyDiaryScreen>
   }
 
   void addAllListData() {
-    const int count = 9;
+    const int count = 7;
+
+    listViews.add(Expanded(
+      child: Padding(
+        padding: const EdgeInsets.only(left: 8, right: 8, top: 4),
+        child: Column(
+          children: <Widget>[
+            Row(
+              children: <Widget>[
+                Container(
+                  height: 48,
+                  width: 2,
+                  decoration: BoxDecoration(
+                    color: HexColor('#87A0E5').withOpacity(0.5),
+                    borderRadius: BorderRadius.all(Radius.circular(4.0)),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Padding(
+                        padding: const EdgeInsets.only(left: 4, bottom: 2),
+                        child: Text(
+                          'Eaten',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontFamily: FitnessAppTheme.fontName,
+                            fontWeight: FontWeight.w500,
+                            fontSize: 16,
+                            letterSpacing: -0.1,
+                            color: FitnessAppTheme.grey.withOpacity(0.5),
+                          ),
+                        ),
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: <Widget>[
+                          SizedBox(
+                            width: 28,
+                            height: 28,
+                            child: Image.asset("assets/fitness_app/eaten.png"),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 4, bottom: 3),
+                            child: Text(
+                              '1127',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontFamily: FitnessAppTheme.fontName,
+                                fontWeight: FontWeight.w600,
+                                fontSize: 16,
+                                color: FitnessAppTheme.darkerText,
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 4, bottom: 3),
+                            child: Text(
+                              'Kcal',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontFamily: FitnessAppTheme.fontName,
+                                fontWeight: FontWeight.w600,
+                                fontSize: 12,
+                                letterSpacing: -0.2,
+                                color: FitnessAppTheme.grey.withOpacity(0.5),
+                              ),
+                            ),
+                          ),
+                        ],
+                      )
+                    ],
+                  ),
+                )
+              ],
+            ),
+            SizedBox(
+              height: 8,
+            ),
+            Row(
+              children: <Widget>[
+                Container(
+                  height: 48,
+                  width: 2,
+                  decoration: BoxDecoration(
+                    color: HexColor('#F56E98').withOpacity(0.5),
+                    borderRadius: BorderRadius.all(Radius.circular(4.0)),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Padding(
+                        padding: const EdgeInsets.only(left: 4, bottom: 2),
+                        child: Text(
+                          'Burned',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontFamily: FitnessAppTheme.fontName,
+                            fontWeight: FontWeight.w500,
+                            fontSize: 16,
+                            letterSpacing: -0.1,
+                            color: FitnessAppTheme.grey.withOpacity(0.5),
+                          ),
+                        ),
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: <Widget>[
+                          SizedBox(
+                            width: 28,
+                            height: 28,
+                            child: Image.asset("assets/fitness_app/burned.png"),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 4, bottom: 3),
+                            child: Text(
+                              '102',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontFamily: FitnessAppTheme.fontName,
+                                fontWeight: FontWeight.w600,
+                                fontSize: 16,
+                                color: FitnessAppTheme.darkerText,
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 8, bottom: 3),
+                            child: Text(
+                              'Kcal',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontFamily: FitnessAppTheme.fontName,
+                                fontWeight: FontWeight.w600,
+                                fontSize: 12,
+                                letterSpacing: -0.2,
+                                color: FitnessAppTheme.grey.withOpacity(0.5),
+                              ),
+                            ),
+                          ),
+                        ],
+                      )
+                    ],
+                  ),
+                )
+              ],
+            )
+          ],
+        ),
+      ),
+    ));
+
+    listViews.add(StockWidget());
 
     listViews.add(
       TitleView(
-        titleTxt: 'Mediterranean diet',
+        titleTxt: 'Your program',
         subTxt: 'Details',
         animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
             parent: widget.animationController!,
@@ -70,19 +232,9 @@ class _MyDiaryScreenState extends State<MyDiaryScreen>
         animationController: widget.animationController!,
       ),
     );
+
     listViews.add(
-      MediterranesnDietView(
-        animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
-            parent: widget.animationController!,
-            curve:
-                Interval((1 / count) * 1, 1.0, curve: Curves.fastOutSlowIn))),
-        animationController: widget.animationController!,
-      ),
-    );
-    listViews.add(
-      TitleView(
-        titleTxt: 'Meals today',
-        subTxt: 'Customize',
+      WorkoutView(
         animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
             parent: widget.animationController!,
             curve:
@@ -90,22 +242,20 @@ class _MyDiaryScreenState extends State<MyDiaryScreen>
         animationController: widget.animationController!,
       ),
     );
-
     listViews.add(
-      MealsListView(
-        mainScreenAnimation: Tween<double>(begin: 0.0, end: 1.0).animate(
-            CurvedAnimation(
-                parent: widget.animationController!,
-                curve: Interval((1 / count) * 3, 1.0,
-                    curve: Curves.fastOutSlowIn))),
-        mainScreenAnimationController: widget.animationController,
+      RunningView(
+        animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
+            parent: widget.animationController!,
+            curve:
+                Interval((1 / count) * 3, 1.0, curve: Curves.fastOutSlowIn))),
+        animationController: widget.animationController!,
       ),
     );
 
     listViews.add(
       TitleView(
-        titleTxt: 'Body measurement',
-        subTxt: 'Today',
+        titleTxt: 'Area of focus',
+        subTxt: 'more',
         animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
             parent: widget.animationController!,
             curve:
@@ -115,44 +265,14 @@ class _MyDiaryScreenState extends State<MyDiaryScreen>
     );
 
     listViews.add(
-      BodyMeasurementView(
-        animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
-            parent: widget.animationController!,
-            curve:
-                Interval((1 / count) * 5, 1.0, curve: Curves.fastOutSlowIn))),
-        animationController: widget.animationController!,
-      ),
-    );
-    listViews.add(
-      TitleView(
-        titleTxt: 'Water',
-        subTxt: 'Aqua SmartBottle',
-        animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
-            parent: widget.animationController!,
-            curve:
-                Interval((1 / count) * 6, 1.0, curve: Curves.fastOutSlowIn))),
-        animationController: widget.animationController!,
-      ),
-    );
-
-    listViews.add(
-      WaterView(
+      AreaListView(
         mainScreenAnimation: Tween<double>(begin: 0.0, end: 1.0).animate(
             CurvedAnimation(
                 parent: widget.animationController!,
-                curve: Interval((1 / count) * 7, 1.0,
+                curve: Interval((1 / count) * 5, 1.0,
                     curve: Curves.fastOutSlowIn))),
         mainScreenAnimationController: widget.animationController!,
       ),
-    );
-    listViews.add(
-      GlassView(
-          animation: Tween<double>(begin: 0.0, end: 1.0).animate(
-              CurvedAnimation(
-                  parent: widget.animationController!,
-                  curve: Interval((1 / count) * 8, 1.0,
-                      curve: Curves.fastOutSlowIn))),
-          animationController: widget.animationController!),
     );
   }
 
@@ -250,7 +370,7 @@ class _MyDiaryScreenState extends State<MyDiaryScreen>
                               child: Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Text(
-                                  'Dashboard',
+                                  'Rations',
                                   textAlign: TextAlign.left,
                                   style: TextStyle(
                                     fontFamily: FitnessAppTheme.fontName,
@@ -288,13 +408,13 @@ class _MyDiaryScreenState extends State<MyDiaryScreen>
                                   Padding(
                                     padding: const EdgeInsets.only(right: 8),
                                     child: Icon(
-                                      Icons.calendar_today,
+                                      Icons.school,
                                       color: FitnessAppTheme.grey,
                                       size: 18,
                                     ),
                                   ),
                                   Text(
-                                    '15 May',
+                                    'Chosen Cause',
                                     textAlign: TextAlign.left,
                                     style: TextStyle(
                                       fontFamily: FitnessAppTheme.fontName,
