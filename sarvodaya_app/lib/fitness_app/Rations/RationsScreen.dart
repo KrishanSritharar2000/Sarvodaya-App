@@ -5,7 +5,6 @@ import 'package:best_flutter_ui_templates/fitness_app/ui_view/title_view.dart';
 import 'package:best_flutter_ui_templates/fitness_app/ui_view/workout_view.dart';
 import 'package:flutter/material.dart';
 
-import '../../main.dart';
 import '../fitness_app_theme.dart';
 
 class RationsScreen extends StatefulWidget {
@@ -58,173 +57,61 @@ class _RationsScreenState extends State<RationsScreen>
   }
 
   void addAllListData() {
-    const int count = 7;
-
-    listViews.add(Expanded(
-      child: Padding(
-        padding: const EdgeInsets.only(left: 8, right: 8, top: 4),
-        child: Column(
-          children: <Widget>[
-            Row(
-              children: <Widget>[
-                Container(
-                  height: 48,
-                  width: 2,
-                  decoration: BoxDecoration(
-                    color: HexColor('#87A0E5').withOpacity(0.5),
-                    borderRadius: BorderRadius.all(Radius.circular(4.0)),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Padding(
-                        padding: const EdgeInsets.only(left: 4, bottom: 2),
-                        child: Text(
-                          'Eaten',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            fontFamily: FitnessAppTheme.fontName,
-                            fontWeight: FontWeight.w500,
-                            fontSize: 16,
-                            letterSpacing: -0.1,
-                            color: FitnessAppTheme.grey.withOpacity(0.5),
-                          ),
-                        ),
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        children: <Widget>[
-                          SizedBox(
-                            width: 28,
-                            height: 28,
-                            child: Image.asset("assets/fitness_app/eaten.png"),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 4, bottom: 3),
-                            child: Text(
-                              '1127',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                fontFamily: FitnessAppTheme.fontName,
-                                fontWeight: FontWeight.w600,
-                                fontSize: 16,
-                                color: FitnessAppTheme.darkerText,
-                              ),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 4, bottom: 3),
-                            child: Text(
-                              'Kcal',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                fontFamily: FitnessAppTheme.fontName,
-                                fontWeight: FontWeight.w600,
-                                fontSize: 12,
-                                letterSpacing: -0.2,
-                                color: FitnessAppTheme.grey.withOpacity(0.5),
-                              ),
-                            ),
-                          ),
-                        ],
-                      )
-                    ],
-                  ),
-                )
-              ],
-            ),
-            SizedBox(
-              height: 8,
-            ),
-            Row(
-              children: <Widget>[
-                Container(
-                  height: 48,
-                  width: 2,
-                  decoration: BoxDecoration(
-                    color: HexColor('#F56E98').withOpacity(0.5),
-                    borderRadius: BorderRadius.all(Radius.circular(4.0)),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Padding(
-                        padding: const EdgeInsets.only(left: 4, bottom: 2),
-                        child: Text(
-                          'Burned',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            fontFamily: FitnessAppTheme.fontName,
-                            fontWeight: FontWeight.w500,
-                            fontSize: 16,
-                            letterSpacing: -0.1,
-                            color: FitnessAppTheme.grey.withOpacity(0.5),
-                          ),
-                        ),
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        children: <Widget>[
-                          SizedBox(
-                            width: 28,
-                            height: 28,
-                            child: Image.asset("assets/fitness_app/burned.png"),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 4, bottom: 3),
-                            child: Text(
-                              '102',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                fontFamily: FitnessAppTheme.fontName,
-                                fontWeight: FontWeight.w600,
-                                fontSize: 16,
-                                color: FitnessAppTheme.darkerText,
-                              ),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 8, bottom: 3),
-                            child: Text(
-                              'Kcal',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                fontFamily: FitnessAppTheme.fontName,
-                                fontWeight: FontWeight.w600,
-                                fontSize: 12,
-                                letterSpacing: -0.2,
-                                color: FitnessAppTheme.grey.withOpacity(0.5),
-                              ),
-                            ),
-                          ),
-                        ],
-                      )
-                    ],
-                  ),
-                )
-              ],
-            )
-          ],
-        ),
-      ),
-    ));
-
-    listViews.add(StockWidget());
+    const int count = 8;
 
     listViews.add(
       TitleView(
-        titleTxt: 'Your program',
-        subTxt: 'Details',
+        titleTxt: 'Chosen District Center:',
+        subTxt: 'Kandy',
+        animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
+            parent: widget.animationController!,
+            curve:
+                Interval((1 / count) * 0, 1.0, curve: Curves.fastOutSlowIn))),
+        animationController: widget.animationController!,
+      ),
+    );
+
+    listViews.add(SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        child: Row(children: <Widget>[
+          Container(
+            margin: EdgeInsets.all(5),
+            padding: EdgeInsets.all(20),
+            color: Colors.cyan,
+            child: Column(
+              children: [Text("Jaffna")],
+            ),
+          ),
+          Container(
+            margin: EdgeInsets.all(5),
+            padding: EdgeInsets.all(20),
+            color: Colors.cyan,
+            child: Column(
+              children: [Text("Kandy")],
+            ),
+          ),
+          Container(
+            margin: EdgeInsets.all(5),
+            padding: EdgeInsets.all(20),
+            color: Colors.cyan,
+            child: Column(
+              children: [Text("Colombo")],
+            ),
+          ),
+          Container(
+            margin: EdgeInsets.all(5),
+            padding: EdgeInsets.all(20),
+            color: Colors.cyan,
+            child: Column(
+              children: [Text("Batticaloa")],
+            ),
+          ),
+        ])));
+
+    listViews.add(
+      TitleView(
+        titleTxt: 'Stock Levels',
+        subTxt: '',
         animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
             parent: widget.animationController!,
             curve:
@@ -234,46 +121,27 @@ class _RationsScreenState extends State<RationsScreen>
     );
 
     listViews.add(
-      WorkoutView(
-        animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
-            parent: widget.animationController!,
-            curve:
-                Interval((1 / count) * 2, 1.0, curve: Curves.fastOutSlowIn))),
-        animationController: widget.animationController!,
-      ),
-    );
-    listViews.add(
-      RunningView(
-        animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
-            parent: widget.animationController!,
-            curve:
-                Interval((1 / count) * 3, 1.0, curve: Curves.fastOutSlowIn))),
-        animationController: widget.animationController!,
-      ),
-    );
+        StockWidget(['Rice', 'Dhal', 'Oranges'], ['10kg', '2kg', '4 sacks']));
+    listViews.add(StockWidget(
+        ['Potatoes', 'Onions', 'Tomatoes'], ['15kg', '5kg', '10kg']));
 
-    listViews.add(
-      TitleView(
-        titleTxt: 'Area of focus',
-        subTxt: 'more',
-        animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
-            parent: widget.animationController!,
-            curve:
-                Interval((1 / count) * 4, 1.0, curve: Curves.fastOutSlowIn))),
-        animationController: widget.animationController!,
-      ),
-    );
 
-    listViews.add(
-      AreaListView(
-        mainScreenAnimation: Tween<double>(begin: 0.0, end: 1.0).animate(
-            CurvedAnimation(
-                parent: widget.animationController!,
-                curve: Interval((1 / count) * 5, 1.0,
-                    curve: Curves.fastOutSlowIn))),
-        mainScreenAnimationController: widget.animationController!,
-      ),
-    );
+
+    listViews.add(Container(
+      margin: EdgeInsets.symmetric(horizontal: 10),
+        child: ElevatedButton(
+          onPressed: () {},
+          child: Text("Request"),
+        )));
+
+    listViews.add(Container(
+      margin: EdgeInsets.symmetric(horizontal: 10),
+        child: ElevatedButton(
+          onPressed: () {},
+          child: Text("Give"),
+        )));
+
+    
   }
 
   Future<bool> getData() async {

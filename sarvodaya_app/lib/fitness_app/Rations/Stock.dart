@@ -4,7 +4,10 @@ import '../../main.dart';
 import '../fitness_app_theme.dart';
 
 class StockWidget extends StatelessWidget {
-  const StockWidget({super.key});
+  const StockWidget(this.items, this.values, {super.key});
+
+  final List<String> items;
+  final List<String> values;
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +21,7 @@ class StockWidget extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Text(
-                  'Carbs',
+                  items[0],
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontFamily: FitnessAppTheme.fontName,
@@ -40,7 +43,7 @@ class StockWidget extends StatelessWidget {
                     child: Row(
                       children: <Widget>[
                         Container(
-                          width: ((70 / 1.2) ),
+                          width: ((70 / 1.2)),
                           height: 4,
                           decoration: BoxDecoration(
                             gradient: LinearGradient(colors: [
@@ -58,7 +61,7 @@ class StockWidget extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(top: 6),
                   child: Text(
-                    '12g left',
+                    values[0],
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontFamily: FitnessAppTheme.fontName,
@@ -81,7 +84,7 @@ class StockWidget extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Text(
-                      'Protein',
+                      items[1],
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontFamily: FitnessAppTheme.fontName,
@@ -103,7 +106,7 @@ class StockWidget extends StatelessWidget {
                         child: Row(
                           children: <Widget>[
                             Container(
-                              width: ((70 / 2) ),
+                              width: ((70 / 2)),
                               height: 4,
                               decoration: BoxDecoration(
                                 gradient: LinearGradient(colors: [
@@ -121,7 +124,7 @@ class StockWidget extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.only(top: 6),
                       child: Text(
-                        '30g left',
+                        values[1],
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontFamily: FitnessAppTheme.fontName,
@@ -146,7 +149,7 @@ class StockWidget extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Text(
-                      'Fat',
+                      items[2],
                       style: TextStyle(
                         fontFamily: FitnessAppTheme.fontName,
                         fontWeight: FontWeight.w500,
@@ -185,7 +188,7 @@ class StockWidget extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.only(top: 6),
                       child: Text(
-                        '10g left',
+                        values[2],
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontFamily: FitnessAppTheme.fontName,
