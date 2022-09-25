@@ -22,6 +22,7 @@ class _RationsScreenState extends State<RationsScreen>
   List<Widget> listViews = <Widget>[];
   final ScrollController scrollController = ScrollController();
   double topBarOpacity = 0.0;
+  String chosenDistrict = 'Kandy';
 
   @override
   void initState() {
@@ -62,7 +63,7 @@ class _RationsScreenState extends State<RationsScreen>
     listViews.add(
       TitleView(
         titleTxt: 'Chosen District Center:',
-        subTxt: 'Kandy',
+        subTxt: chosenDistrict,
         animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
             parent: widget.animationController!,
             curve:
@@ -74,12 +75,18 @@ class _RationsScreenState extends State<RationsScreen>
     listViews.add(SingleChildScrollView(
         scrollDirection: Axis.horizontal,
         child: Row(children: <Widget>[
-          Container(
-            margin: EdgeInsets.all(5),
-            padding: EdgeInsets.all(20),
-            color: Colors.cyan,
-            child: Column(
-              children: [Text("Jaffna")],
+          GestureDetector(
+            onTap: () => setState(() {
+              print("Clicked Jaffna");
+              chosenDistrict = "Jaffna";
+            }),
+            child: Container(
+              margin: EdgeInsets.all(5),
+              padding: EdgeInsets.all(20),
+              color: Colors.cyan,
+              child: Column(
+                children: [Text("Jaffna")],
+              ),
             ),
           ),
           Container(
@@ -125,23 +132,19 @@ class _RationsScreenState extends State<RationsScreen>
     listViews.add(StockWidget(
         ['Potatoes', 'Onions', 'Tomatoes'], ['15kg', '5kg', '10kg']));
 
-
-
     listViews.add(Container(
-      margin: EdgeInsets.symmetric(horizontal: 10),
+        margin: EdgeInsets.symmetric(horizontal: 10),
         child: ElevatedButton(
           onPressed: () {},
           child: Text("Request"),
         )));
 
     listViews.add(Container(
-      margin: EdgeInsets.symmetric(horizontal: 10),
+        margin: EdgeInsets.symmetric(horizontal: 10),
         child: ElevatedButton(
           onPressed: () {},
           child: Text("Give"),
         )));
-
-    
   }
 
   Future<bool> getData() async {

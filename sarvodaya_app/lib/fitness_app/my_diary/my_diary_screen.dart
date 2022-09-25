@@ -57,7 +57,7 @@ class _MyDiaryScreenState extends State<MyDiaryScreen>
   }
 
   void addAllListData() {
-    const int count = 9;
+    const   count = 9;
 
     listViews.add(
       TitleView(
